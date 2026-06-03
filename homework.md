@@ -22,3 +22,10 @@ Explore routing and use of ? , +, (),* in the routes
 Use of regex in routes/a/
 Reading the query params in the routes
 Reading the dynamic routes
+
+Multiple Route Handler - Play with that code
+next()
+next function and errors along with res.send()
+app.use("/route", rH,[rH2,rH3])
+What is middleware? why we need that
+Diff btw app.use() and app.all()
