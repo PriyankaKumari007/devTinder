@@ -1,0 +1,1 @@
+const URI ="mongodb+srv://priDev:wBnTjdTTeWXWgEfa@devtinder.929pjqt.mongodb.net/?appName=DevTinder"

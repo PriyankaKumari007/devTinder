@@ -1,47 +1,41 @@
 const express = require("express");
-
+const connectDB = require("./config/database");
 const app =express();
+const User = require("./models/user")
 
-const {adminAuth} = require("./middleware/auth")
+app.post("/signup",async(req,res)=>{
 
-app.use("/admin",adminAuth);
-
-app.get("/admin/getAllData",(req,res)=>{
-    res.send({username:"Virat",jerseyNo:18})
-})
-
-
-app.get("/getStaffData",(req,res)=>{
-    try{
-       res.send("User Data Sent")
-    } catch(err)
+//creating instance of userModdel
+    const user =  new User ({
+        firstName: "Virat",
+        lastName : "Kholi",
+        emailId:"virat@gmail.com",
+        password:"virat@12",
+        age:27,
+        gender:"Male"
+    })
+    try
     {
-        res.status(500).send("Something went wrong")
+        await user.save();
+   res.send("User added successfully")
     }
-})
-
-app.use("/",(err,req,res,next)=>{
-    if(err)
+    catch(err)
     {
-        res.status(500).send("Contact Support Team")
+        res.status(400).send("Error saving the user: "+err.message)
     }
+   
 })
-// // ? query 
-// app.get("/ab?c", (req,res,next)=>{    
-//    // Route Handler
-//     res.send("Hellooooooooooo1");
-//     next();
-  
-// },
-// (req,res)=>{
-// res.send("2nd Response")
-// });
 
-// // :/ Dynamic routing
-// app.get("/user/:username/:userId",(req,res)=>{
-//     console.log(req.params)
-//     res.send("Dynamic routing")
-// })
-app.listen(3000,()=>{
+
+connectDB()
+.then(()=>{
+    console.log("Database connection establish");
+    app.listen(3000,()=>{
     console.log("Server is successfully running on port 3000")
 });
+})
+.catch((err)=>{
+    console.error("Database cannot be connected");
+})
+
+

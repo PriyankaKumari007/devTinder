@@ -29,3 +29,14 @@ next function and errors along with res.send()
 app.use("/route", rH,[rH2,rH3])
 What is middleware? why we need that
 Diff btw app.use() and app.all()
+
+mongodb+srv://<db_username>:<db_password>@devtinder.929pjqt.mongodb.net/?appName=DevTinder
+
+Create a free cluster on mongoDb official website
+Install mongoose library
+Connect your application to the Database "Cnnection String"
+Connect to Database before listening to the server
+Create a userSchema && userModel
+Create signup  API to add data to database
+Push some documents using API calls from postman
+Error handling using try and catch
