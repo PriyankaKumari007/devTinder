@@ -55,4 +55,6 @@ create a custom validate function
 Add default
 Add API level validation for each field
 DATA Santization
+Install validator package
+Explore validator library and use validate function for password, email
 
