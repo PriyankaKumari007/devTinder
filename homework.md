@@ -40,6 +40,18 @@ Create a userSchema && userModel
 Create signup  API to add data to database
 Push some documents using API calls from postman
 Error handling using try and catch
+
 Diff between json and JS object
 Add the express.json() Middleware to your app
 Make your  signup API dynamic to receive data frm end user
+Create Delete API and test with POSTMAN
+Create PATH API to update user details 
+Diff btw PATCH AND PUT API
+Explore the Mongoose Doc for Model Methods
+
+Explore schema type options from the doc
+add required, default,trim,lowercase,minLength
+create a custom validate function
+Add default
+
+

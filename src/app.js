@@ -5,7 +5,6 @@ const User = require("./models/user");
 
 app.use(express.json());
 app.post("/signup", async (req, res) => {
-  // console.log(req.body);
   //creating instance of userModdel
   const user = new User(req.body);
   try {
@@ -35,6 +34,20 @@ app.get("/feed", async(req, res) => {
     res.status(400).send("User feed not found");
   }
 });
+
+//update data of user
+app.patch("/user", async(req,res)=>{
+    const userId = req.body._id;
+    const data = req.body;
+    try{
+        const user = await User.findByIdAndUpdate({_id: userId}, data,{
+            runValidators:true
+        })
+        res.send("User updated Successfully");
+    }catch(err){
+        res.status(400).send("Update Failed "+err.message);
+    }
+})
 
 app.delete("/user",async(req,res)=>{
     const userId =  req.body._id;
