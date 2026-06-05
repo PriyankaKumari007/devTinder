@@ -58,3 +58,7 @@ DATA Santization
 Install validator package
 Explore validator library and use validate function for password, email
 
+Validate data in SignUp API
+Install bcrypt package
+Create PasswordHash using bcrypt and save the user
+
