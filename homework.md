@@ -53,5 +53,6 @@ Explore schema type options from the doc
 add required, default,trim,lowercase,minLength
 create a custom validate function
 Add default
-
+Add API level validation for each field
+DATA Santization
 

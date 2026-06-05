@@ -36,10 +36,23 @@ app.get("/feed", async(req, res) => {
 });
 
 //update data of user
-app.patch("/user", async(req,res)=>{
-    const userId = req.body._id;
+app.patch("/user/:_id", async(req,res)=>{
+    const userId = req.params?._id;
     const data = req.body;
-    try{
+
+    const ALLOWED_UPDATE =[
+        "photoUrl", "about", "gender", "age" ,"skills"
+    ]
+
+  
+     try{
+          const isUpdateAllowed = Object.keys(data).every((k)=>
+        ALLOWED_UPDATE.includes(k)
+    )
+    if(!isUpdateAllowed)
+    {
+       throw new Error("Update not allowed")
+    }
         const user = await User.findByIdAndUpdate({_id: userId}, data,{
             runValidators:true
         })
