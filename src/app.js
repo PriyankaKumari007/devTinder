@@ -32,7 +32,7 @@ app.post("/signup", async (req, res) => {
 
 app.post("/login",async(req,res)=>{
 try{
-const{emailId,passsword} =req.body;
+const{emailId,password} =req.body;
 const user = await User.findOne({emailId:emailId})
 
 if(!user)
