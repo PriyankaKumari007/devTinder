@@ -77,3 +77,6 @@ Read the cookies inside your profile API and find the logged in user
 Explore tinder APIs
 Create a list of all API you can think of in Dev Tinder
 Group multiple routes under respective router
+Read Doc of express.Router()
+Creates routes folder for manageing auth,profile
+Import this router in app.js
