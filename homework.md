@@ -64,3 +64,16 @@ Create PasswordHash using bcrypt and save the user
 Create Login API
 Compare password and throw errors if email or password is invalid
 
+
+install cookie-parser
+send a dummy cookie to user
+create GET /profile API and check if you get the cookie back
+install jsonwebtoken
+In login API after email and  password validation, create a JWT token and send it to user in cokies
+Read the cookies inside your profile API and find the logged in user
+
+
+11
+Explore tinder APIs
+Create a list of all API you can think of in Dev Tinder
+Group multiple routes under respective router
