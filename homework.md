@@ -87,3 +87,12 @@ Import this router in app.js
 Create Logout API and test
 Create PATCH /profile/edit API
 Test all API
+
+12.
+Create Connection Request Schema
+Send Connection Request API
+Proper validation of API
+$or query $and query in mongoose
+Read about compond index in mongoose doc
+why do we need index in DB
+What is adv and disadvantage of index
