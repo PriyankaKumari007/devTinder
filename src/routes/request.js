@@ -1,4 +1,13 @@
 const express = require('express');
-const profileRouter = express.Router();
+const requestRouter = express.Router();
+const {userAuth} = require('../middleware/auth');
 
-module.exports=profileRouter;
+requestRouter.post("/sendConnectionRequest",userAuth,async(req,res)=>{
+    const user = req.user;
+
+    //Sending connection request
+    console.log("Sending a connection request");
+    res.send(user.firstName+" sent the connection request");
+})
+
+module.exports= requestRouter;

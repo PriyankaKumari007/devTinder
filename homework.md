@@ -71,6 +71,10 @@ create GET /profile API and check if you get the cookie back
 install jsonwebtoken
 In login API after email and  password validation, create a JWT token and send it to user in cokies
 Read the cookies inside your profile API and find the logged in user
+userAuth Middleware
+Add the userAuth middleware in profile and a new sendConnectionRequest
+Set the jwt token and cookies to 7 days
+
 
 
 11
@@ -80,3 +84,6 @@ Group multiple routes under respective router
 Read Doc of express.Router()
 Creates routes folder for manageing auth,profile
 Import this router in app.js
+Create Logout API and test
+Create PATCH /profile/edit API
+Test all API
