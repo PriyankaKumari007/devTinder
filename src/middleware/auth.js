@@ -2,6 +2,7 @@
 const User = require("../models/user");
 
  const userAuth = async(req,res,next)=>{
+     // console.log("userAuth started");
     //Read the token
     try{
    const {token} = req.cookies;
@@ -19,7 +20,10 @@ const User = require("../models/user");
     throw new Error("User not found")
    }
    req.user = user;
-   next();
+//    console.log("AuthUser",req.user);
+//    console.log("before next()");
+        next();
+        //console.log("after next()");
 }catch(err)
 {
     res.status(400).send("ERROR " +err.message)

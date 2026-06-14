@@ -96,3 +96,9 @@ $or query $and query in mongoose
 Read about compond index in mongoose doc
 why do we need index in DB
 What is adv and disadvantage of index
+
+
+13.
+Write code for  "/request/review/:status/:requestId", 
+Read about ref and populate -->basically used for joining to table
+Create GET /requests/received
