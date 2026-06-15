@@ -12,7 +12,7 @@ authRouter.post("/signup", async (req, res) => {
     const { firstName, lastName, emailId, password } = req.body;
     //Encrypt the password
     const passwordHash = await bcrypt.hash(password, 10);
-    console.log(passwordHash);
+    // console.log(passwordHash);
 
     //Creating instance of userModdel
     const user = new User({
@@ -30,7 +30,7 @@ authRouter.post("/signup", async (req, res) => {
 });
 
 authRouter.post("/login", async (req, res) => {
-  console.log("/login",req);
+  // console.log("/login",req);
   try {
     const { emailId, password } = req.body;
     const user = await User.findOne({ emailId: emailId });
@@ -43,7 +43,6 @@ authRouter.post("/login", async (req, res) => {
     if (isPasswordValid) {
       //Create aJWT token
       const token = await  user.getJWT();
-      console.log(token);
       res.cookie("token", token,{httpOnly:true});
 
       //Add the token to cookie and send the response back to the user

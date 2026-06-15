@@ -12,7 +12,7 @@ try{
         toUserId:loggedInUser._id,
         status:'interested'
     }).populate("fromUserId",["firstName","lastName"]);
-    console.log("/requests/received",connectionRequest);
+  
     res.json({message:'Data fetched successfully ',data: connectionRequest });
    
 
@@ -35,6 +35,41 @@ userRouter.get("/user/connections",userAuth,async(req,res)=>{
    }catch(err){
     res.status(400).send("ERROR: "+err.message);
    }
+});
+
+userRouter.get("/user/feed",userRouter,async(req,res)=>{
+    try{
+        //User see all the other user card
+        //his own card
+        //card of his own connection
+        //ignored people
+        //already sent the connection request
+
+        const loggedInUser = req.user;
+
+        const connectionRequest = await ConnectionRequest.find({
+         $or:[
+            {fromUserId: loggedInUser._id},{toUserId:loggedInUser._id}
+         ]
+        }).select("fromUserId toUserId");
+
+        const hideUserFromFeed = new Set();
+        connectionRequest.forEach(req=>{
+            hideUserFromFeed.add(req.fromUserId.toString());
+            hideUserFromFeed.add(req.toUserId.toString());
+        });
+        // console.log(hideUserFromFeed);
+        const users = await User.find({
+            $and:[
+                { _id:{ $nin: Array.from(hideUserFromFeed)}},
+                {_id: { $ne:loggedInUser._id}}
+            ]
+        }).select("fromUserId",["firstName","lastName"])
+        res.send(users)
+    }catch(err)
+    {
+        res.status(400).send("ERROR: ",err.message);
+    }
 })
 
 module.exports=userRouter;

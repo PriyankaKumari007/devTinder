@@ -8,7 +8,7 @@ requestRouter.post(
   "/request/send/:status/:toUserId",
   userAuth,
   async (req, res) => {
-    console.log("Route reached");
+ 
     try {
       const fromUserId = req.user._id;
       const toUserId = req.params.toUserId;
@@ -58,7 +58,7 @@ requestRouter.post(
     try {
       const loggedInUser = req.user;
       const { status, requestId } = req.params;
-      console.log(req.params);
+     
       const allowedStatus = ["accepted", "rejected"];
 
       if (!allowedStatus.includes(status)) {
@@ -70,7 +70,7 @@ requestRouter.post(
         toUserId: loggedInUser._id,
         status: "interested",
       });
-      console.log("connectionRequest", connectionRequest);
+    
       if (!connectionRequest) {
         return res
           .status(404)
