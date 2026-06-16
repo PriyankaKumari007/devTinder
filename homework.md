@@ -98,7 +98,23 @@ why do we need index in DB
 What is adv and disadvantage of index
 
 
-13.
+13.ConnectioRequestTRouter/()
 Write code for  "/request/review/:status/:requestId", 
 Read about ref and populate -->basically used for joining to table
 Create GET /requests/received
+
+14.userRouter
+GET /user/requests/received
+GET /user/connections
+GET /user/feed - Gets you profile of other users on platfrom
+Explore the $nin,$and,$ne and other query operator https://www.mongodb.com/docs/manual/reference/operator/query/or/
+
+Pagination
+/feed?page=1&limit=10 = >first 10 users users 1-10 .skip(0) & .limit(10)
+/feed?page=2&limit=10 =>11-20  .skip(10) & .limit(10)
+
+skip= (page-1)*limit
+
+Query : POSTMAN:  http://localhost:3000/feed?page=1&limit=1  ---so here page and limit is query --->at route level we have not mentioned anything app.get("/feed",async(req,res)=>{})
+
+Params: app.get("/feed/:page/:limit",async(re,res)=>{}) -->here params are page and limit at the route level u have to tell this params 
